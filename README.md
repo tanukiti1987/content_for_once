@@ -1,5 +1,7 @@
 # ContentForOnce
 
+[![Build Status](https://travis-ci.org/tanukiti1987/content_for_once.svg?branch=master)](https://travis-ci.org/tanukiti1987/content_for_once)
+
 Seems like `content_for`, content_for_once embed the HTML tags(especially, `javascript_include_tag` and `stylesheet_link_tag`) just only once.
 
 ## Usage
