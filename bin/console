@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "active_support"
+require "action_view"
+require "content_for_ext"
+
+require "pry"
+Pry.start
