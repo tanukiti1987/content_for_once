@@ -5,11 +5,14 @@ module ContentForOnce
       name = name.to_sym
 
       @contents[name].concat(capture(&block))
-      @contents[name] = @contents[name].scan(/<.*?>/).uniq.join
+      @contents[name] = @contents[name].scan(/<\w+(?:\s+[^>]+)?\/?>*<\/\w+>|<\w+(?:\s+[^>]+)?\/?>/).uniq.join
 
       @contents.each do |name, content|
         # ref: https://github.com/rails/rails/blob/master/actionview/lib/action_view/helpers/capture_helper.rb#L149
-        @view_flow.set(name, content)
+        _content = @view_flow.get(name).presence || ''
+        _content.concat(content.html_safe)
+        _content = _content.scan(/<\w+(?:\s+[^>]+)?\/?>*<\/\w+>|<\w+(?:\s+[^>]+)?\/?>/).uniq.join
+        @view_flow.set(name, _content)
       end
     end
   end
