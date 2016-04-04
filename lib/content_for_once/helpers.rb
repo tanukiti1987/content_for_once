@@ -4,7 +4,7 @@ module ContentForOnce
       @contents ||= Hash.new {|h, k| h[k] = '' }
       name = name.to_sym
 
-      @contents[name].concat(capture(&block))
+      @contents[name].concat(capture(&block)) if capture(&block).present?
       @contents[name] = @contents[name].scan(/<\w+(?:\s+[^>]+)?\/?>*<\/\w+>|<\w+(?:\s+[^>]+)?\/?>/).uniq.join
 
       @contents.each do |name, content|
