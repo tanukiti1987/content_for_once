@@ -16,6 +16,7 @@ module ContentForOnce
           map(&:to_s).select(&:present?).map {|e| e.gsub(/>\n/, '>') }.uniq.join("\n")
         @view_flow.set(name, _content)
       end
+      nil
     end
   end
 end

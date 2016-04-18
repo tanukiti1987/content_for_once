@@ -28,6 +28,10 @@ describe ContentForOnce do
       expect(action_view.view_flow.content).to be_has_key(:css)
       expect(action_view.view_flow.content[:css]).to eq(expected_tags)
     end
+
+    it 'returns nil' do
+      expect(action_view.content_for_once(:css) { first_given_block }).to be_nil
+    end
   end
 
   context 'call `content_for_once` and `content_for` with the same key' do
